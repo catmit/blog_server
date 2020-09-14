@@ -1,7 +1,9 @@
 package com.catmit.blog.server.web.entity.po;
 
 import com.catmit.blog.server.web.entity.BaseEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserPO extends BaseEntity {
     private String name;
     private String mail;
