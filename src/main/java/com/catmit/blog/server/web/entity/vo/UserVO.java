@@ -3,12 +3,14 @@ package com.catmit.blog.server.web.entity.vo;
 import com.catmit.blog.server.web.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public class UserVO extends BaseEntity {
 
     private String name;
     private String avatarUrl;
+    private LocalDateTime updateTime;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Set<ArticleVO> articles;
@@ -56,5 +58,13 @@ public class UserVO extends BaseEntity {
 
     public void setReplies(Set<ReplyVO> replies) {
         this.replies = replies;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

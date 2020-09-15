@@ -3,12 +3,15 @@ package com.catmit.blog.server.web.entity.po;
 import com.catmit.blog.server.web.entity.BaseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+
 @Repository
 public class UserPO extends BaseEntity {
     private String name;
     private String mail;
     private String password;
     private String avatarUrl;
+    private LocalDateTime updateTime;
 
     public String getName() {
         return name;
@@ -42,4 +45,11 @@ public class UserPO extends BaseEntity {
         this.avatarUrl = avatarUrl;
     }
 
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
+    }
 }

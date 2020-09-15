@@ -6,7 +6,6 @@ public abstract class BaseEntity {
     private int id;
 
     private LocalDateTime createTime;
-    private LocalDateTime updateTime;
 
     public int getId() {
         return id;
@@ -22,13 +21,5 @@ public abstract class BaseEntity {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 }
