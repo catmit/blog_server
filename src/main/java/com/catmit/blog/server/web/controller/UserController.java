@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("/users?offset={offset}&limit={limit}")
     public Page<UserVO> listUsers(@PathVariable int offset, @PathVariable int limit){
-        return new Page.Builder<UserVO>().offset(offset).limit(limit).build();
+        return new Page.PageBuilder<UserVO>().offset(offset).limit(limit).build();
     }
 
 

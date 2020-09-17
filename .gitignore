@@ -35,3 +35,4 @@ build/
 /server.iml
 /.mvn/
 /src/test/
+/src/main/java/com/catmit/blog/server/web/dao/

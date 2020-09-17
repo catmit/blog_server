@@ -10,16 +10,16 @@ public class Page <T>{
 
     private T data;
 
-    private Page(Builder<T> builder) {
-        this.offset = builder.offset;
-        this.limit = builder.limit;
-        this.count = builder.count;
-        this.hasNext = builder.hasNext;
-        this.hasPreview = builder.hasPreview;
-        this.data = builder.data;
+    private Page(PageBuilder<T> PageBuilder) {
+        this.offset = PageBuilder.offset;
+        this.limit = PageBuilder.limit;
+        this.count = PageBuilder.count;
+        this.hasNext = PageBuilder.hasNext;
+        this.hasPreview = PageBuilder.hasPreview;
+        this.data = PageBuilder.data;
     }
 
-    public static class Builder<T>{
+    public static class PageBuilder<T>{
         private int offset;
         private int limit;
         private int count;
@@ -29,19 +29,19 @@ public class Page <T>{
 
         private T data;
 
-        public Builder<T> offset(int offset){
+        public PageBuilder<T> offset(int offset){
             this.offset = offset;
             return this;
         }
-        public Builder<T> limit(int limit){
+        public PageBuilder<T> limit(int limit){
             this.limit = limit;
             return this;
         }
-        public Builder<T> count(int count){
+        public PageBuilder<T> count(int count){
             this.count = count;
             return this;
         }
-        public Builder<T> data(T data){
+        public PageBuilder<T> data(T data){
             this.data = data;
             return this;
         }

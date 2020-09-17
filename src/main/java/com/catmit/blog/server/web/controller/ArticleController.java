@@ -33,6 +33,6 @@ public class ArticleController {
 
     @GetMapping("/articles?offset={offset}&limit={limit}")
     public Page<ArticleVO> listArticles(@PathVariable int offset, @PathVariable int limit){
-        return new Page.Builder<ArticleVO>().offset(offset).limit(limit).build();
+        return new Page.PageBuilder<ArticleVO>().offset(offset).limit(limit).build();
     }
 }
