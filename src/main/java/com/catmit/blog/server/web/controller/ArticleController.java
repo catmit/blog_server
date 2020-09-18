@@ -3,6 +3,9 @@ package com.catmit.blog.server.web.controller;
 import com.catmit.blog.server.web.entity.po.ArticlePO;
 import com.catmit.blog.server.web.entity.vo.ArticleVO;
 import com.catmit.blog.server.web.entity.vo.Page;
+import com.catmit.blog.server.web.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,28 +14,31 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/articles")
 public class ArticleController {
 
+    @Autowired
+    ArticleService articleService;
+
     @PostMapping("/articles")
     public ArticleVO write(@RequestBody ArticlePO article){
-        return new ArticleVO();
+       return articleService.write(article);
     }
 
     @DeleteMapping("/articles/{articleId}")
     public void deleteArticle(@PathVariable int articleId){
-
+        articleService.deleteArticle(articleId);
     }
 
     @PutMapping("/articles/{articleId}")
-    public ArticleVO editArticle(@PathVariable int articleId, @RequestBody ArticlePO articlePO){
-        return new ArticleVO();
+    public ArticleVO editArticle(@RequestBody ArticlePO articlePO){
+        return articleService.updateArticle(articlePO);
     }
 
-    @GetMapping("/articles")
-    public ArticleVO findArticleById(@PathVariable int articleId){
-        return new ArticleVO();
+    @GetMapping("/articles/{urlTitle}")
+    public ArticleVO findArticleByTitle(@PathVariable String urlTitle){
+        return articleService.getArticleVOByUrlTitle(urlTitle);
     }
 
     @GetMapping("/articles?offset={offset}&limit={limit}")
     public Page<ArticleVO> listArticles(@PathVariable int offset, @PathVariable int limit){
-        return new Page.PageBuilder<ArticleVO>().offset(offset).limit(limit).build();
+        return articleService.listArticles(offset, limit);
     }
 }

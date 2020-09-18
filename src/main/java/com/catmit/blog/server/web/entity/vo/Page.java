@@ -22,12 +22,14 @@ public class Page <T>{
     public static class PageBuilder<T>{
         private int offset;
         private int limit;
+
         private int count;
+        private T data;
 
         private boolean hasNext;
         private boolean hasPreview;
 
-        private T data;
+
 
         public PageBuilder<T> offset(int offset){
             this.offset = offset;
