@@ -1,9 +1,8 @@
 package com.catmit.blog.server.web.controller;
 
-import com.catmit.blog.server.web.entity.po.UserPO;
-import com.catmit.blog.server.web.entity.vo.ArticleVO;
-import com.catmit.blog.server.web.entity.vo.Page;
-import com.catmit.blog.server.web.entity.vo.UserVO;
+import com.catmit.blog.server.web.model.po.UserPO;
+import com.catmit.blog.server.web.model.vo.Page;
+import com.catmit.blog.server.web.model.vo.UserVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

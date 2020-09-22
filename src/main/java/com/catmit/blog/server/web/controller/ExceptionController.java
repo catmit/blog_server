@@ -1,6 +1,6 @@
 package com.catmit.blog.server.web.controller;
 
-import com.catmit.blog.server.web.entity.vo.ApiResult;
+import com.catmit.blog.server.web.model.vo.ApiResult;
 import com.catmit.blog.server.web.exception.BusinessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

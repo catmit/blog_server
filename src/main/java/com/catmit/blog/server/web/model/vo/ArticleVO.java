@@ -1,6 +1,6 @@
-package com.catmit.blog.server.web.entity.vo;
+package com.catmit.blog.server.web.model.vo;
 
-import com.catmit.blog.server.web.entity.BaseEntity;
+import com.catmit.blog.server.web.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.stereotype.Repository;
 

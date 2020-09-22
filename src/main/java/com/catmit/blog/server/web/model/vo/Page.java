@@ -1,4 +1,4 @@
-package com.catmit.blog.server.web.entity.vo;
+package com.catmit.blog.server.web.model.vo;
 
 public class Page <T>{
     private int offset;

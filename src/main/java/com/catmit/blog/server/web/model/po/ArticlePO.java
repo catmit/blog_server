@@ -1,4 +1,4 @@
-package com.catmit.blog.server.web.entity.po;
+package com.catmit.blog.server.web.model.po;
 
 import org.springframework.stereotype.Repository;
 

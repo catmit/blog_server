@@ -1,4 +1,4 @@
-package com.catmit.blog.server.web.entity;
+package com.catmit.blog.server.web.model;
 
 import java.time.LocalDateTime;
 

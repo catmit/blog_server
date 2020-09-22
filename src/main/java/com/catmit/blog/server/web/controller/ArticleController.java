@@ -1,11 +1,10 @@
 package com.catmit.blog.server.web.controller;
 
-import com.catmit.blog.server.web.entity.po.ArticlePO;
-import com.catmit.blog.server.web.entity.vo.ArticleVO;
-import com.catmit.blog.server.web.entity.vo.Page;
+import com.catmit.blog.server.web.model.po.ArticlePO;
+import com.catmit.blog.server.web.model.vo.ArticleVO;
+import com.catmit.blog.server.web.model.vo.Page;
 import com.catmit.blog.server.web.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

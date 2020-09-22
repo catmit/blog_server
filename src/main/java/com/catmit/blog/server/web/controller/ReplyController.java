@@ -1,6 +1,6 @@
 package com.catmit.blog.server.web.controller;
 
-import com.catmit.blog.server.web.entity.po.ReplyPO;
+import com.catmit.blog.server.web.model.po.ReplyPO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

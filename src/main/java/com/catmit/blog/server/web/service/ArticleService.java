@@ -1,10 +1,10 @@
 package com.catmit.blog.server.web.service;
 
 import com.catmit.blog.server.web.dao.ArticleDAO;
-import com.catmit.blog.server.web.entity.po.ArticlePO;
-import com.catmit.blog.server.web.entity.vo.ApiResult;
-import com.catmit.blog.server.web.entity.vo.ArticleVO;
-import com.catmit.blog.server.web.entity.vo.Page;
+import com.catmit.blog.server.web.model.po.ArticlePO;
+import com.catmit.blog.server.web.model.vo.ApiResult;
+import com.catmit.blog.server.web.model.vo.ArticleVO;
+import com.catmit.blog.server.web.model.vo.Page;
 import com.catmit.blog.server.web.exception.AppearException;
 import com.catmit.blog.server.web.exception.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class ArticleService {
     }
 
     public Page listArticles(int offset, int limit) {
-        Page.PageBuilder pageBuilder = new Page.PageBuilder<ArticleVO>().offset(offset).limit(limit);
+        Page.PageBuilder pageBuilder = new Page.PageBuilder<>().offset(offset).limit(limit);
         Page page = pageBuilder.data(articleDAO.listArticles(pageBuilder)).count(articleDAO.countArticles()).build();
         return page;
     }

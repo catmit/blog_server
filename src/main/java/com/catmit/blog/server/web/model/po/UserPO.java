@@ -1,6 +1,6 @@
-package com.catmit.blog.server.web.entity.po;
+package com.catmit.blog.server.web.model.po;
 
-import com.catmit.blog.server.web.entity.BaseEntity;
+import com.catmit.blog.server.web.model.BaseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
