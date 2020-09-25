@@ -9,13 +9,14 @@ import java.util.List;
 
 @Repository
 public class ArticleVO extends BaseEntity {
+    private String urlTitle;
     private String contentUrl;
     private String coverUrl;
     private String brief;
 
     private UserVO user;
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private LocalDateTime updateTime;
+    private LocalDateTime editTime;
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<CommentVO> comments;
 }

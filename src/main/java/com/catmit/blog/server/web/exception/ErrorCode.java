@@ -8,7 +8,8 @@ public enum ErrorCode {
     EMPTY_PASSWORD(404003,"密码为空"),
     MAIL_ALREADY_EXIST(404004,"邮箱已存在"),
 
-    ARTICLE_NOT_EXIST(404104,"文章不存在");
+    ARTICLE_NOT_EXIST(404104,"文章不存在"),
+    ARTICLE_EDIT_WRONG(500001, "文章修改失败");
 
 
     private int errorCode;

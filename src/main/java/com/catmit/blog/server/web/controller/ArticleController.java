@@ -17,7 +17,7 @@ public class ArticleController {
     ArticleService articleService;
 
     @PostMapping("/articles")
-    public ArticleVO write(@RequestBody ArticlePO article){
+    public ArticlePO write(@RequestBody ArticlePO article){
        return articleService.write(article);
     }
 
@@ -27,7 +27,7 @@ public class ArticleController {
     }
 
     @PutMapping("/articles/{articleId}")
-    public ArticleVO editArticle(@RequestBody ArticlePO articlePO){
+    public ArticlePO editArticle(@RequestBody ArticlePO articlePO){
         return articleService.updateArticle(articlePO);
     }
 
