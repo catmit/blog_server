@@ -11,12 +11,19 @@ import com.catmit.blog.server.web.exception.AppearException;
 import com.catmit.blog.server.web.exception.ErrorCode;
 import com.catmit.blog.server.web.model.vo.UserVO;
 import com.catmit.blog.server.web.util.Util;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 @Service
 public class ArticleService {
@@ -51,18 +58,35 @@ public class ArticleService {
         return article;
     }
 
-    /*
-    未完成
-        list<articlePo>-> list<userId> -> list<user>
-        list<articlePo> + list<user> -> list<ArticleVO>
-     */
     public Page listArticles(int offset, int limit) {
+        Page page = null;
         Page.PageBuilder pageBuilder = new Page.PageBuilder<>().offset(offset).limit(limit);
-        List<ArticlePO> articlePOs = articleDAO.listArticles(pageBuilder);
-        List<Integer> userIdList = new ArrayList();
-        articlePOs.forEach((articlePO)->userIdList.add(articlePO.getUserId()));
-        List<ArticleVO> articles = null;
-        Page page = pageBuilder.data(articles).count(articleDAO.countArticles()).build();
+        try {
+             page = CompletableFuture
+                    .supplyAsync(() -> articleDAO.listArticles(pageBuilder))
+                    .thenApplyAsync((Function<List<ArticlePO>, List<ArticleVO>>) articlePOs -> {
+                        List<Integer> userIdList = new ArrayList();
+                        articlePOs.forEach((articlePO) -> userIdList.add(articlePO.getUserId()));
+                        List<UserVO> userVOs = userDAO.listUserVOByIdlist(userIdList);
+                        List<ArticleVO> articleVOs = new ArrayList<>();
+                        for (int i = 0; i < articlePOs.size(); i++) {
+                            ArticleVO articleVO = new ArticleVO();
+                            BeanUtils.copyProperties(articlePOs.get(i), articleVO);
+                            articleVO.setUser(userVOs.get(i));
+                            articleVOs.add(articleVO);
+                        }
+                        return articleVOs;
+                    }).thenApplyAsync(new Function<List<ArticleVO>, Page>() {
+                        @Override
+                        public Page apply(List<ArticleVO> articleVOs) {
+                            return pageBuilder.data(articleVOs).count(articleDAO.countArticles()).build();
+                        }
+                    }).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         return page;
     }
 }
